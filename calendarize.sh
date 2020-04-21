@@ -27,4 +27,7 @@ url_download="agendastudentiunipd.easystaff.it/ec_download_ical_grid.php?view=ea
 
 curl $url_download --output ~/.calendarize/calendar.ics
 
-calcurse -i ~/.calendarize/calendar.ics
+# remove all the commas, since they are not backslashed as stated by RFC5545 Specification for an .ics file
+cat ~/.calendarize/calendar.ics|tr -d , > ~/.calendarize/calendar_without_commas.ics
+
+calcurse -i ~/.calendarize/calendar_without_commas.ics
